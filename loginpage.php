@@ -10,6 +10,25 @@ and open the template in the editor.
         <title>ResearchMyProf - Login</title>
     </head>
     <body>
+        <h1 align="center"
+        style="font-family:consolas">Login</h1>
+        <hr>
+        <table align="center">
+            <tr>
+                <td><a href="searchpage.php">Search</a></td>
+                <td><a href="loginpage.php">Login</a></td>
+                <td><a href="aboutpage.php">About</a></td>
+            </tr>
+        </table>
+        <form align="center" 
+            //action="" //need a page to be directed to, perhaps a personal page
+            method="post">
+        Username:<br>
+        <input type="text" name="Username"><br>
+        Password:<br>
+        <input type="password" name="Password"><br><br>
+        <input type="submit" value="Login">
+        </form>
         <?php
         // put your code here
         ?>
