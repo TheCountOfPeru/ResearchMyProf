@@ -20,6 +20,15 @@ and open the template in the editor.
                 <td><a href="aboutpage.php">About</a></td>
             </tr>
         </table>
+        <form align="center" 
+            //action="" //need a page to be directed to, perhaps a personal page
+            method="post">
+        Username:<br>
+        <input type="text" name="Username"><br>
+        Password:<br>
+        <input type="password" name="Password"><br><br>
+        <input type="submit" value="Login">
+        </form>
         <?php
         // put your code here
         ?>
