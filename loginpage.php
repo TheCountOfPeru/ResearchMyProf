@@ -21,7 +21,7 @@ and open the template in the editor.
             </tr>
         </table>
         <form align="center" 
-            //action="" //need a page to be directed to, perhaps a personal page
+            action="" 
             method="post">
         Username:<br>
         <input type="text" name="Username"><br>
