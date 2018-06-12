@@ -37,7 +37,7 @@ and open the template in the editor.
             </tr>
             
         </table>
-            
+              
             <p align="center"><input type="submit" value="Search"></p>
             
         </form>

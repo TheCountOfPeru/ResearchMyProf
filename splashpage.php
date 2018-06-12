@@ -21,7 +21,7 @@ Jonathan Yee
                 <td><a href="aboutpage.php">About</a></td>
             </tr>
         </table>
-        
+        <hr>
             
         <?php
         

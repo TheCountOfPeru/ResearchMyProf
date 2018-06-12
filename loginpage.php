@@ -20,6 +20,7 @@ and open the template in the editor.
                 <td><a href="aboutpage.php">About</a></td>
             </tr>
         </table>
+        <hr>
         <form align="center" 
             action="" 
             method="post">
