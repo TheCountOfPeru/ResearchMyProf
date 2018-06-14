@@ -1,5 +1,5 @@
-//After successful login, it will display welcome page.
-
+<!--After successful login, it will display welcome page.
+-->
 
 <?php
    include('session.php');

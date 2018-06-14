@@ -7,15 +7,15 @@ define('DB_PASSWORD', 'rootpass');
 define('DB_NAME', 'researchmyprof');
  
 /* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
 // Check connection
-if($link === false){
+if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 ?>
 
-/* 
+<!--
  source: https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php
- */
+ -->
 
