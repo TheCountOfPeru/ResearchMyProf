@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.7.17-log)
-# Date: 2018-06-12 16:57:12
+# Date: 2018-06-13 18:15:32
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -28,8 +28,8 @@ CREATE TABLE `edit_history` (
 #
 
 CREATE TABLE `institution` (
-  `name` varchar(256) NOT NULL DEFAULT '',
   `postal_code` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(256) NOT NULL DEFAULT '',
   PRIMARY KEY (`postal_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -37,6 +37,7 @@ CREATE TABLE `institution` (
 # Data for table "institution"
 #
 
+INSERT INTO `institution` VALUES ('CB2 1TN','University of Cambridge'),('H3A 0G4','McGill University'),('OX1 2JD','University of Oxford'),('T1K 3M4','University of Lethbridge'),('T2N 1N4','University of Calgary'),('T4N 5H5','Red Deer College'),('T6G 2R3','University of Alberta');
 
 #
 # Structure for table "location"
@@ -54,6 +55,7 @@ CREATE TABLE `location` (
 # Data for table "location"
 #
 
+INSERT INTO `location` VALUES ('H3A 0G4','Canada','Montreal'),('T4N 5H5','Canada','Red Deer'),('T6G 2R3','Canada','Edmonton'),('T2N 1N4','Canada','Calgary'),('CB2 1TN','Britain','Cambridge'),('T1K 3M4','Canada','Lethbridge'),('OX1 2JD','Britain','Oxford');
 
 #
 # Structure for table "publication"
@@ -83,6 +85,7 @@ CREATE TABLE `topic` (
 # Data for table "topic"
 #
 
+INSERT INTO `topic` VALUES ('Art'),('Astronomy'),('Biology'),('Chemistry'),('Computer Science'),('Economics'),('Engineering'),('English'),('Geology'),('Geophysics'),('History'),('Math'),('Music'),('Neuroscience'),('Physics'),('Zoology');
 
 #
 # Structure for table "related_to"
@@ -113,13 +116,15 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL DEFAULT '',
   `is_admin` bit(1) NOT NULL DEFAULT b'0',
   `is_mod` bit(1) NOT NULL DEFAULT b'0',
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user"
 #
 
+INSERT INTO `user` VALUES (1,'admin','2018-06-13 18:12:27','admin',b'1',b'0'),(6,'mod','2018-06-13 18:13:14','mod',b'0',b'1'),(7,'user','2018-06-13 18:13:26','user',b'0',b'0');
 
 #
 # Structure for table "profile"
