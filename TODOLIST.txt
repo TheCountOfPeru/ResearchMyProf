@@ -1,7 +1,7 @@
-1. Create ER
-2. Create RM
-3. Create SQL table
-4. Fill some tables with info. (user, institution, location)
-5. Create login profile for website
+1. Create ER DONE
+2. Create RM DONE
+3. Create SQL table DONE
+4. Fill some tables with info. (user, institution, location) DONE
+5. Create login method for website DONE
 6. Enable users to search profiles
 7. Enable users to add profile
