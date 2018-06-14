@@ -16,6 +16,7 @@ Jonathan Yee
         <hr>
         <table align="center">
             <tr>
+                <td><a href="index.php">Home</a></td>
                 <td><a href="loginpage.php">Login</a></td>
                 <td><a href="aboutpage.php">About</a></td>
             </tr>
