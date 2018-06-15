@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.7.17-log)
-# Date: 2018-06-13 18:15:32
+# Date: 2018-06-15 12:47:45
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -71,6 +71,7 @@ CREATE TABLE `publication` (
 # Data for table "publication"
 #
 
+INSERT INTO `publication` VALUES ('Simple and effective behavior tracking by post processing of association rules into segments','https://ieeexplore.ieee.org/document/6118896/');
 
 #
 # Structure for table "topic"
@@ -104,6 +105,7 @@ CREATE TABLE `related_to` (
 # Data for table "related_to"
 #
 
+INSERT INTO `related_to` VALUES ('Computer Science','Simple and effective behavior tracking by post processing of association rules into segments');
 
 #
 # Structure for table "user"
@@ -118,7 +120,7 @@ CREATE TABLE `user` (
   `is_mod` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user"
@@ -132,21 +134,21 @@ INSERT INTO `user` VALUES (1,'admin','2018-06-13 18:12:27','admin',b'1',b'0'),(6
 
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id_creator` int(11) NOT NULL DEFAULT '0',
+  `user_id_creator` int(11) DEFAULT NULL,
   `I_postal` varchar(255) NOT NULL DEFAULT '',
   `name` varchar(255) NOT NULL DEFAULT '',
-  `date_of_birth` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`profile_id`),
   KEY `user_id_creator` (`user_id_creator`),
   KEY `institution_postal` (`I_postal`),
   CONSTRAINT `institution_postal` FOREIGN KEY (`I_postal`) REFERENCES `institution` (`postal_code`),
   CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`user_id_creator`) REFERENCES `user` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "profile"
 #
 
+INSERT INTO `profile` VALUES (1,1,'T2N 1N4','Tamer Jarada'),(2,1,'T2N 1N4','Tamer Jarada2'),(3,1,'T6G 2R3','Some One');
 
 #
 # Structure for table "report"
@@ -186,6 +188,7 @@ CREATE TABLE `authored` (
 # Data for table "authored"
 #
 
+INSERT INTO `authored` VALUES (1,'Simple and effective behavior tracking by post processing of association rules into segments');
 
 #
 # Structure for table "interested_in"
@@ -204,6 +207,7 @@ CREATE TABLE `interested_in` (
 # Data for table "interested_in"
 #
 
+INSERT INTO `interested_in` VALUES (1,'Computer Science'),(2,'Physics'),(3,'Computer Science');
 
 #
 # Structure for table "worked_with"
