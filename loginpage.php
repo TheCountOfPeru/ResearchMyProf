@@ -10,8 +10,6 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
    include("config.php");
    session_start();
    
-   //filter_input(INPUT_SERVER, 'REQUEST_METHOD')
-   //filter_input(INPUT_POST, 'password')
    if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST") {
       // username and password sent from form 
       $myusername = mysqli_real_escape_string($db,filter_input(INPUT_POST, 'Username'));
