@@ -19,11 +19,12 @@ and open the template in the editor.
             //Query block
             if (filter_input(INPUT_GET, 'query') == "") {
                 $queryErr = "Query is required";
-            } else {
+            }else{
                 $query = mysqli_real_escape_string($db,filter_input(INPUT_GET, 'query'));
-                 $sql = "SELECT postal_code, name FROM $select WHERE name LIKE '%$query%'";
+                $sql = "SELECT name FROM profile WHERE name LIKE '%$query%'";
                 $result = mysqli_query($db,$sql);
             }
+           
             
 
           }
@@ -58,12 +59,9 @@ and open the template in the editor.
         <input type="text" name="query" value="<?php echo $name;?>"><br> 
             </p>
            <p align="center">
-            <input type="radio" name="select" <?php if (isset($select) && $select=="name") echo "checked";?> value="institution">Professor Name
+            <input type="radio" name="select" <?php if (isset($select) && $select=="name") echo "checked";?> value="name">Professor Name
             <input type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
-            <input type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="institution">Topic
-            <?php
-            $select = "name"
-            ?>
+            <input type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic
            </p>
            
            <p align='center'>
@@ -72,14 +70,15 @@ and open the template in the editor.
         </form>
         <p>
             <?php
-            if($query != "" || $select == ""){
+            if($query != "" || $select != ""){
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<p align='center'>"."Postal Code: " . $row["postal_code"]. " Name: " . $row["name"]. "</p>"."<br>";
+                        echo "<p align='center'>". $row["postal_code"]. " Name: " . $row["name"]. "</p>"."<br>";
                     }
                 } else {
                     echo "<p align='center'>0 results</p>";
+                    echo $select;
                 }
             }
             ?>
