@@ -6,7 +6,34 @@ and open the template in the editor.
 -->
 <?php
    include('session.php');
-   
+   // define variables and set to empty values
+   $selectErr = $queryErr = "";
+    $select = $query = "";
+        if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "GET") {
+            //Button block
+             if (empty(filter_input(INPUT_GET, 'select'))) {
+                $selectErr = "Selection is required";
+              } else {
+                $select = test_input(filter_input(INPUT_GET, 'select'));
+              }
+            //Query block
+            if (filter_input(INPUT_GET, 'query') == "") {
+                $queryErr = "Query is required";
+            } else {
+                $query = mysqli_real_escape_string($db,filter_input(INPUT_GET, 'query'));
+                 $sql = "SELECT postal_code, name FROM $select WHERE name LIKE '%$query%'";
+                $result = mysqli_query($db,$sql);
+            }
+            
+
+          }
+          
+          function test_input($data) {
+            $trim = trim($data);
+            $strip = stripslashes($trim);
+            $special = htmlspecialchars($strip);
+         return $special;
+}
 ?>
 <html>
     <head>
@@ -26,35 +53,36 @@ and open the template in the editor.
         <hr>
         <form action=""
               method="get">
-        <table align="center">
-            <tr>
-                <td><input type="text" name="school"></td>
-                <td>School</td> 
-            </tr>
-            <tr>
-                <td><input type="text" name="researcherName"></td>
-                <td>Researcher Name</td> 
-            </tr>
-            <tr>
-                <td><input type="text" name="topic"></td>
-                <td>Topic of Interest</td> 
-            </tr>
-        </table>
-                <p align="center"><input type="submit" value="Search"></p>
+            <p align="center">
+               Query:<br>
+        <input type="text" name="query" value="<?php echo $name;?>"><br> 
+            </p>
+           <p align="center">
+            <input type="radio" name="select" <?php if (isset($select) && $select=="name") echo "checked";?> value="institution">Professor Name
+            <input type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
+            <input type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="institution">Topic
+            <?php
+            $select = "name"
+            ?>
+           </p>
+           
+           <p align='center'>
+               <input type="submit" value='Search'>
+           </p>
         </form>
-        <?php
-                $schl = mysqli_real_escape_string($db,filter_input(INPUT_GET, 'school'));
-                $sql = "SELECT postal_code, name FROM institution WHERE name LIKE '%$schl%'";
-                //echo $sql."<br>"
-                $result = mysqli_query($db,$sql);
+        <p>
+            <?php
+            if($query != "" || $select == ""){
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "Postal Code: " . $row["postal_code"]. " Name: " . $row["name"]. "<br>";
+                        echo "<p align='center'>"."Postal Code: " . $row["postal_code"]. " Name: " . $row["name"]. "</p>"."<br>";
                     }
                 } else {
-                    echo "0 results";
+                    echo "<p align='center'>0 results</p>";
                 }
-                ;?>
+            }
+            ?>
+        </p>
         </body>
 </html>
