@@ -16,12 +16,25 @@ and open the template in the editor.
               } else {
                 $select = test_input(filter_input(INPUT_GET, 'select'));
               }
+              
+            
             //Query block
             if (filter_input(INPUT_GET, 'query') == "") {
                 $queryErr = "Query is required";
             }else{
                 $query = mysqli_real_escape_string($db,filter_input(INPUT_GET, 'query'));
-                $sql = "SELECT name FROM profile WHERE name LIKE '%$query%'";
+                $sql = "SELECT profile.profile_id, profile.name, interested_in.tname, institution.i_name, location.country, location.city
+                        FROM profile JOIN location ON profile.I_postal=location.postal_code
+						 JOIN institution ON profile.I_postal=institution.postal_code
+						 JOIN interested_in ON profile.profile_id=interested_in.profile_id
+                        WHERE";
+                if($select == 'country'){
+                    $sql = $sql." location.country LIKE '%".$query."%'";
+                }elseif($select == 'institution'){
+                    $sql = $sql." institution.i_name LIKE '%".$query."%'";
+                }elseif($select == 'topic'){
+                    $sql = $sql." interested_in.tname LIKE '%".$query."%'";
+                }
                 $result = mysqli_query($db,$sql);
             }
            
@@ -59,7 +72,7 @@ and open the template in the editor.
         <input type="text" name="query" value="<?php echo $name;?>"><br> 
             </p>
            <p align="center">
-            <input type="radio" name="select" <?php if (isset($select) && $select=="name") echo "checked";?> value="name">Professor Name
+            <input type="radio" name="select" <?php if (isset($select) && $select=="country") echo "checked";?> value="country">Country
             <input type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
             <input type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic
            </p>
@@ -73,12 +86,12 @@ and open the template in the editor.
             if($query != "" || $select != ""){
                 if ($result->num_rows > 0) {
                     // output data of each row
+                    echo "";
                     while($row = $result->fetch_assoc()) {
-                        echo "<p align='center'>". $row["postal_code"]. " Name: " . $row["name"]. "</p>"."<br>";
+                        echo "<p align='center'>". " Name: " . $row["name"]. "</p>";
                     }
                 } else {
                     echo "<p align='center'>0 results</p>";
-                    echo $select;
                 }
             }
             ?>
