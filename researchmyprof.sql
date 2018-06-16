@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.7.17-log)
-# Date: 2018-06-15 12:47:45
+# Date: 2018-06-16 17:55:48
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -29,7 +29,7 @@ CREATE TABLE `edit_history` (
 
 CREATE TABLE `institution` (
   `postal_code` varchar(255) NOT NULL DEFAULT '',
-  `name` varchar(256) NOT NULL DEFAULT '',
+  `i_name` varchar(256) NOT NULL DEFAULT '',
   PRIMARY KEY (`postal_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -207,7 +207,7 @@ CREATE TABLE `interested_in` (
 # Data for table "interested_in"
 #
 
-INSERT INTO `interested_in` VALUES (1,'Computer Science'),(2,'Physics'),(3,'Computer Science');
+INSERT INTO `interested_in` VALUES (1,'Computer Science'),(2,'Physics'),(3,'Computer Science'),(1,'Math');
 
 #
 # Structure for table "worked_with"

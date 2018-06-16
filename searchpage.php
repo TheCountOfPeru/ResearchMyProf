@@ -23,6 +23,7 @@ and open the template in the editor.
                 $queryErr = "Query is required";
             }else{
                 $query = mysqli_real_escape_string($db,filter_input(INPUT_GET, 'query'));
+                $query = trim($query);
                 $sql = "SELECT profile.profile_id, profile.name, interested_in.tname, institution.i_name, location.country, location.city
                         FROM profile JOIN location ON profile.I_postal=location.postal_code
 						 JOIN institution ON profile.I_postal=institution.postal_code
@@ -76,7 +77,6 @@ and open the template in the editor.
             <input type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
             <input type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic
            </p>
-           
            <p align='center'>
                <input type="submit" value='Search'>
            </p>
@@ -86,10 +86,24 @@ and open the template in the editor.
             if($query != "" || $select != ""){
                 if ($result->num_rows > 0) {
                     // output data of each row
-                    echo "";
+                    echo "<table align='center'
+                            border='1'><tr>
+                            <th>Name</th>
+                            <th>Topic</th>
+                            <th>Institution</th>
+                            <th>Country</th>
+                            <th>City</th>
+                            </tr>";
                     while($row = $result->fetch_assoc()) {
-                        echo "<p align='center'>". " Name: " . $row["name"]. "</p>";
+                        echo "<tr>";
+                        echo "<td>"."<a href='profile.php?id=".$row["profile_id"]."'>".$row["name"]."</a>"."</td>";
+                        echo "<td>".$row["tname"]."</td>";
+                        echo "<td>".$row["i_name"]."</td>";
+                        echo "<td>".$row["country"]."</td>";
+                        echo "<td>".$row["city"]."</td>";
+                        echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p align='center'>0 results</p>";
                 }
