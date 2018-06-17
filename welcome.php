@@ -12,7 +12,8 @@
     <body>
         <h1 align="center"
         style="font-family:consolas">Welcome<?php
-        echo ", ".$login_session;
+        echo ", ".$_SESSION['login_user'];
+        echo $_SESSION['user_id'];
         ?></h1>
         <hr>
         <table align="center">

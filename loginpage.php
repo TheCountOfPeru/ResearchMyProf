@@ -27,7 +27,10 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
       if($count == 1) {
          //session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-         
+         //while ($row = $result->fetch_assoc()) {
+         //    echo $row;//$_SESSION['user_id'] = $row;
+         //}
+        
          header("location: welcome.php");
       }else {
           
