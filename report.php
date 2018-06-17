@@ -5,6 +5,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 Page to create reports.
 -->
+<?php
+include('session.php');
+?>
 <html>
     <head>
         <meta charset="UTF-8">

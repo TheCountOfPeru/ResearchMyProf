@@ -18,6 +18,7 @@
         <table align="center">
             <tr>
                 <td><a href="searchpage.php">Search</a></td>
+                <td><a href="create_profile.php">Add Profile</a></td>
                 <td><a href="logout.php">Logout</a></td>
                 
             </tr>

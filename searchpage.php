@@ -62,6 +62,7 @@ and open the template in the editor.
         <table align="center">
             <tr>
                 <td><a href="searchpage.php">Search</a></td>
+                <td><a href="create_profile.php">Add Profile</a></td>
                 <td><a href="logout.php">Logout</a></td>
             </tr>
         </table>
@@ -87,6 +88,7 @@ and open the template in the editor.
                 if ($result->num_rows > 0) {
                     // output data of each row
                     echo "<table align='center'
+                            style='width:50%'
                             border='1'><tr>
                             <th>Name</th>
                             <th>Topic</th>

@@ -5,6 +5,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 Page for user management. Restricted to admins.
 -->
+<?php
+include('session.php');
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -17,6 +20,7 @@ Page for user management. Restricted to admins.
         <table align="center">
             <tr>
                 <td><a href="searchpage.php">Search</a></td>
+                <td><a href="create_profile.php">Add Profile</a></td>
                 <td><a href="logout.php">Logout</a></td>
             </tr>
         </table>
