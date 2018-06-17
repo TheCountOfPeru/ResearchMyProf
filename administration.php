@@ -11,15 +11,16 @@ include('session.php');
             $sql="";
             $safePost = filter_input_array(INPUT_POST);
             foreach($safePost as $key => $value){
-                echo substr($key, -1) . ": " . $value . "<br />";
-}               $sql="UPDATE user SET";
+                 $sql="UPDATE user SET ";
                     if(substr($key, 0, 1)=='a'){
-                        $sql=$sql."is_admin=b'0'";
+                        $sql=$sql."is_admin=NOT is_admin";
                     }
                     elseif(substr($key, 0, 1)=='m'){
-                        $sql=$sql."is_mod=b'0'";
+                        $sql=$sql."is_mod=NOT is_mod";
                     }
-                $sql=$sql."WHERE user_id='".$value."'";            
+                $sql=$sql." WHERE user_id='".substr($key, -1)."'";   
+                mysqli_query($db,$sql);
+                }              
         }     
 ?>
 <html>
