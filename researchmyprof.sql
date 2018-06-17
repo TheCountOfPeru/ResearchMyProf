@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.7.17-log)
-# Date: 2018-06-16 17:55:48
+# Date: 2018-06-16 20:19:47
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -116,8 +116,8 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL DEFAULT '',
   `start_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `password` varchar(255) NOT NULL DEFAULT '',
-  `is_admin` bit(1) NOT NULL DEFAULT b'0',
-  `is_mod` bit(1) NOT NULL DEFAULT b'0',
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `is_mod` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -126,7 +126,7 @@ CREATE TABLE `user` (
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (1,'admin','2018-06-13 18:12:27','admin',b'1',b'0'),(6,'mod','2018-06-13 18:13:14','mod',b'0',b'1'),(7,'user','2018-06-13 18:13:26','user',b'0',b'0');
+INSERT INTO `user` VALUES (1,'admin','2018-06-13 18:12:27','admin',1,0),(6,'mod','2018-06-13 18:13:14','mod',0,1),(7,'user','2018-06-13 18:13:26','user',0,1);
 
 #
 # Structure for table "profile"
