@@ -7,7 +7,12 @@ Page for user management. Restricted to admins.
 -->
 <?php
 include('session.php');
+        if($_SESSION['is_admin'] == '0'){
+            echo $_SESSION['is_admin'];
+            header("location:welcome.php"); //Prevent non admin access to this page
+        }
         if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
+            
             $sql="";
             $safePost = filter_input_array(INPUT_POST);
             foreach($safePost as $key => $value){

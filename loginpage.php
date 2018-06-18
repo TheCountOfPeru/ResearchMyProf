@@ -15,10 +15,15 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
       $myusername = mysqli_real_escape_string($db,filter_input(INPUT_POST, 'Username'));
       $mypassword = mysqli_real_escape_string($db,filter_input(INPUT_POST, 'Password')); 
       
-      $sql = "SELECT user_id FROM user WHERE username = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT user_id, is_admin, is_mod FROM user WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
+      $first_row = $result->fetch_assoc();
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
+      //Get some user info from db
+      $user_id = $first_row['user_id'];
+      $is_admin = $first_row['is_admin'];
+      $is_mod = $first_row['is_mod'];
       
       $count = mysqli_num_rows($result);
       
@@ -27,9 +32,9 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
       if($count == 1) {
          //session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-         //while ($row = $result->fetch_assoc()) {
-         //    echo $row;//$_SESSION['user_id'] = $row;
-         //}
+         $_SESSION['user_id'] = $user_id;
+         $_SESSION['is_admin'] = $is_admin;
+         $_SESSION['is_mod'] = $is_mod;
         
          header("location: welcome.php");
       }else {
