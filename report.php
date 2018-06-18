@@ -19,9 +19,16 @@ include('session.php');
         <hr>
         <table align="center">
             <tr>
+                <?php if($_SESSION['is_admin'] == '1'){//Custom links depending on users permmisions
+                    echo "<td><a href='administration.php'>Administration</a></td>";
+                }?>
+                <?php if($_SESSION['is_mod'] == '1'){
+                    echo "<td><a href='moderation.php'>Moderation</a></td>";
+                }?>
                 <td><a href="searchpage.php">Search</a></td>
                 <td><a href="create_profile.php">Add Profile</a></td>
                 <td><a href="logout.php">Logout</a></td>
+                
             </tr>
         </table>
         <hr>

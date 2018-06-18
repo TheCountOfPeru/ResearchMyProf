@@ -1,20 +1,26 @@
-<!--After successful login, it will display welcome page.
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+Displays reports that are currently in the db
 -->
-
 <?php
-   include('session.php');
+include('session.php');
+        if($_SESSION['is_mod'] == '0'){
+            
+            header("location:welcome.php"); //Prevent non admin access to this page
+        }
+        
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ResearchMyProf - Welcome</title>
+        <title>ResearchMyProf - Moderation</title>
     </head>
     <body>
         <h1 align="center"
-        style="font-family:consolas">Welcome<?php
-        echo ", ".$_SESSION['login_user'];
-       
-        ?></h1>
+        style="font-family:consolas">Moderation</h1>
         <hr>
         <table align="center">
             <tr>
@@ -32,6 +38,5 @@
         </table>
         <hr>
         
-    </body>
+        </body>
 </html>
-
