@@ -105,7 +105,7 @@ and open the template in the editor.
                             </tr>";
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>"."<a href='profile.php?id=".$row["profile_id"]."'>".$row["name"]."</a>"."</td>";
+                        echo "<td><a href='profile.php?id=".$row["profile_id"]."'>".$row["name"]."</a></td>";
                         echo "<td>".$row["tname"]."</td>";//Should change this to show all topics related to profile, dont make another row of the same profile
                         echo "<td>".$row["i_name"]."</td>";
                         echo "<td>".$row["country"]."</td>";

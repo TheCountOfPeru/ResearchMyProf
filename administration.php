@@ -8,7 +8,6 @@ Page for user management. Restricted to admins.
 <?php
 include('session.php');
         if($_SESSION['is_admin'] == '0'){
-            echo $_SESSION['is_admin'];
             header("location:welcome.php"); //Prevent non admin access to this page
         }
         if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
@@ -52,7 +51,7 @@ include('session.php');
             </tr>
         </table>
         <hr>
-        <p>
+        
         <form action="" align="center" method="post">
         <?php
         $sql = "SELECT user.user_id, user.username, user.is_admin, user.is_mod, user.start_date
