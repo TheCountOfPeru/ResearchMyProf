@@ -3,10 +3,17 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
-Page to create reports.
+Page to create reports. Needs to be accessed from a profile page so that the profile_id is given to this page
 -->
 <?php
-include('session.php');
+    include('session.php');
+    if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
+                $report = mysqli_real_escape_string($db,filter_input(INPUT_POST, 'Report'));
+                $sql = "INSERT INTO report VALUES (".$profile_id.", ".$_SESSION['user_id'].
+                        ", NULL, CURRENT_TIMESTAMP, '".$report."')";
+                echo $sql;
+                //mysqli_query($db,$sql);                   
+            }
 ?>
 <html>
     <head>
@@ -28,10 +35,22 @@ include('session.php');
                 <td><a href="searchpage.php">Search</a></td>
                 <td><a href="create_profile.php">Add Profile</a></td>
                 <td><a href="logout.php">Logout</a></td>
-                
             </tr>
         </table>
         <hr>
-        
+        <form align="center"
+              method="post">
+            <p>
+                Please write a report that clearly states what is incorrect and how it should be fixed.
+                <br>
+                Providing sources to where you found the correct information is recommended.
+            </p>
+            
+            <textarea name="Report" rows="10" cols="50">
+            
+            </textarea>
+            <br>
+            <input type="submit">
+        </form>
         </body>
 </html>
