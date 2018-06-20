@@ -3,29 +3,70 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
-For profile display
+Page for making updates to a profile. Should be linked to from all profile pages
 -->
 <?php
    include('session.php');
+
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ResearchMyProf - Profile</title>
+        <title>ResearchMyProf - <?php
+        $sqlname = "SELECT name
+                FROM profile
+                WHERE profile_id=".filter_input(INPUT_GET, 'id');
+        $result = mysqli_query($db,$sqlname);
+        $first_row = $result->fetch_assoc();
+        echo $first_row['name'];
+        ?>
+        </title>
     </head>
     <body>
         <h1 align="center"
-        style="font-family:consolas">Profile
-            </h1>
+        style="font-family:consolas"><?php
+        $sqlname = "SELECT name
+                FROM profile
+                WHERE profile_id=".filter_input(INPUT_GET, 'id');
+        $result = mysqli_query($db,$sqlname);
+        $first_row = $result->fetch_assoc();
+        echo $first_row['name'];
+        ?></h1>
         <hr>
         <table align="center">
             <tr>
+                <?php if($_SESSION['is_admin'] == '1'){//Custom links depending on users permmisions
+                    echo "<td><a href='administration.php'>Administration</a></td>";
+                }?>
+                <?php if($_SESSION['is_mod'] == '1'){
+                    echo "<td><a href='moderation.php'>Moderation</a></td>";
+                }?>
                 <td><a href="searchpage.php">Search</a></td>
+                <td><a href="create_profile.php">Add Profile</a></td>
                 <td><a href="logout.php">Logout</a></td>
                 
             </tr>
         </table>
         <hr>
+        <p>
+	<h2>
+	Name
+	</h2>
+		
+	<h2>
+        Institution
+        </h2>
+
+	<h2>
+	Interests
+        </h2>
+
+	<h2>
+        Papers
+        </h2>
+
+        </p>
         
-    </body>
+        
+        </body>
 </html>
