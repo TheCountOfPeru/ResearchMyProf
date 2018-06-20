@@ -7,22 +7,16 @@ Page to create reports. Needs to be accessed from a profile page so that the pro
 -->
 <?php
     include('session.php');
-    if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
-                $report = mysqli_real_escape_string($db,filter_input(INPUT_POST, 'Report'));
-                $sql = "INSERT INTO report VALUES (".$profile_id.", ".$_SESSION['user_id'].
-                        ", NULL, CURRENT_TIMESTAMP, '".$report."')";
-                echo $sql;
-                //mysqli_query($db,$sql);                   
-            }
+    
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ResearchMyProf - Report</title>
+        <title>ResearchMyProf - Confirm</title>
     </head>
     <body>
         <h1 align="center"
-        style="font-family:consolas">Report</h1>
+        style="font-family:consolas">Confirm</h1>
         <hr>
         <table align="center">
             <tr>
@@ -38,19 +32,17 @@ Page to create reports. Needs to be accessed from a profile page so that the pro
             </tr>
         </table>
         <hr>
-        <form align="center"
-              method="post">
-            <p>
-                Please write a report that clearly states what is incorrect and how it should be fixed.
-                <br>
-                Providing sources to where you found the correct information is recommended.
-            </p>
-            
-            <textarea name="Report" rows="10" cols="50" autofocus="">
-            
-            </textarea>
-            <br>
-            <input type="submit">
-        </form>
+        <?php
+            $sql="SELECT i_name, postal_code FROM institution order by i_name"; 
+                /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
+                echo "<select name=institution value=''>Institution</option>"; // list box select command
+ 
+                foreach ($db->query($sql) as $row){//Array or records stored in $row
+                    echo "<option value=".preg_replace('/\s+/', ' ', $row[postal_code]).">$row[postal_code]</option>"; 
+                    /* Option values are added by looping through the array */ 
+                }
+                 echo "</select><br><br>";// Closing of list box
+                 echo $_GET[institution];
+            ?>
         </body>
 </html>

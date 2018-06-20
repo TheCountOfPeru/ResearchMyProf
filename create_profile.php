@@ -31,24 +31,29 @@ include('session.php');
             </tr>
         </table>
         <hr>
-        <form align='center'>
-            Full Name:<br>
-            <input type="text" name="name"><br>
-           
-            Institution:<br>
+        
+        <form align="center"
+              action="create_profile_confimation.php"
+              method="">
+            
+                   Full Name:<br>
+                   <input type="text" name="profile_name"><br><br> 
+             Institution:<br>
             <?php
             $sql="SELECT i_name, postal_code FROM institution order by i_name"; 
                 /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
                 echo "<select name=institution value=''>Institution</option>"; // list box select command
  
                 foreach ($db->query($sql) as $row){//Array or records stored in $row
-                    echo "<option value=$row[postal_code]>$row[i_name]</option>"; 
+                    echo "<option value=".preg_replace('/\s+/', ' ', $row[postal_code]).">$row[i_name]</option>"; 
                     /* Option values are added by looping through the array */ 
                 }
-                 echo "</select><br>";// Closing of list box
+                 echo "</select><br><br>";// Closing of list box
             ?>
-            
-             Topics:<br>
+
+
+                    Topics involved in:<br>
+                    Hold Ctrl to select more than one topic.<br>
             <?php
             $sql="SELECT name FROM topic order by name"; 
                 /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
@@ -58,10 +63,31 @@ include('session.php');
                     echo "<option value=$row[name]>$row[name]</option>"; 
                     /* Option values are added by looping through the array */ 
                 }
-                 echo "</select><br>";// Closing of list box
+                 echo "</select><br><br>";// Closing of list box
             ?>
-             
+                
+                    Publications Authored: <br>
+                    Please type one publication per line. Add one link next to the title. Include the http part.<br>
+                    <textarea name="Report" rows="20" cols="75" autofocus="">
+                    </textarea><br><br>
+                
+                     Professors worked with:<br>
+                     Hold Ctrl to select more than one professor.<br>
+            <?php
+            $sql="SELECT name FROM profile order by name"; 
+                /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
+                echo "<select name=topic value='' multiple size='16'>Topic</option>"; // list box select command
+ 
+                foreach ($db->query($sql) as $row){//Array or records stored in $row
+                    echo "<option value=$row[name]>$row[name]</option>"; 
+                    /* Option values are added by looping through the array */ 
+                }
+                 echo "</select><br><br>";// Closing of list box
+            ?>
+                
             <input type="submit" value="Submit">
+            
         </form>
+        
         </body>
 </html>
