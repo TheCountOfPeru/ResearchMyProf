@@ -7,16 +7,17 @@ Page for making updates to a profile. Should be linked to from all profile pages
 -->
 <?php
    include('session.php');
-
+   $result=$sql="";
+   $id = filter_input(INPUT_GET, 'id');
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>ResearchMyProf - <?php
-        $sqlname = "SELECT name
+        $sql = "SELECT name
                 FROM profile
-                WHERE profile_id=".filter_input(INPUT_GET, 'id');
-        $result = mysqli_query($db,$sqlname);
+                WHERE profile_id=".$id;
+        $result = mysqli_query($db,$sql);
         $first_row = $result->fetch_assoc();
         echo $first_row['name'];
         ?>
@@ -48,13 +49,19 @@ Page for making updates to a profile. Should be linked to from all profile pages
             </tr>
         </table>
         <hr>
-        <p>
+        <p>		
 	<h2>
-	Name
-	</h2>
-		
-	<h2>
-        Institution
+        Institution - <?php
+        $sqlname = "SELECT institution.i_name, location.country, location.city
+                    FROM profile JOIN location ON profile.I_postal=location.postal_code
+                                 JOIN institution ON profile.I_postal=institution.postal_code
+                    WHERE profile.profile_id=".filter_input(INPUT_GET, 'id');
+        $result = mysqli_query($db,$sqlname);
+        $first_row = $result->fetch_assoc();
+        echo $first_row['i_name'].", ";
+        echo $first_row['country'].", ";
+        echo $first_row['city'];
+        ?>
         </h2>
 
 	<h2>
