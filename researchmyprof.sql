@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.7.17-log)
-# Date: 2018-06-16 20:19:47
+# Date: 2018-06-20 15:04:49
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -37,7 +37,7 @@ CREATE TABLE `institution` (
 # Data for table "institution"
 #
 
-INSERT INTO `institution` VALUES ('CB2 1TN','University of Cambridge'),('H3A 0G4','McGill University'),('OX1 2JD','University of Oxford'),('T1K 3M4','University of Lethbridge'),('T2N 1N4','University of Calgary'),('T4N 5H5','Red Deer College'),('T6G 2R3','University of Alberta');
+INSERT INTO `institution` VALUES ('CB21TN','University of Cambridge'),('H3A0G4','McGill University'),('OX12JD','University of Oxford'),('T1K3M4','University of Lethbridge'),('T2N1N4','University of Calgary'),('T4N5H5','Red Deer College'),('T6G2R3','University of Alberta');
 
 #
 # Structure for table "location"
@@ -47,15 +47,15 @@ CREATE TABLE `location` (
   `postal_code` varchar(256) NOT NULL DEFAULT '',
   `country` varchar(255) NOT NULL DEFAULT '',
   `city` varchar(255) NOT NULL DEFAULT '',
-  KEY `postal_code` (`postal_code`),
-  CONSTRAINT `location_ibfk_1` FOREIGN KEY (`postal_code`) REFERENCES `institution` (`postal_code`)
+  KEY `location_ibfk_1` (`postal_code`),
+  CONSTRAINT `location_ibfk_1` FOREIGN KEY (`postal_code`) REFERENCES `institution` (`postal_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
 # Data for table "location"
 #
 
-INSERT INTO `location` VALUES ('H3A 0G4','Canada','Montreal'),('T4N 5H5','Canada','Red Deer'),('T6G 2R3','Canada','Edmonton'),('T2N 1N4','Canada','Calgary'),('CB2 1TN','Britain','Cambridge'),('T1K 3M4','Canada','Lethbridge'),('OX1 2JD','Britain','Oxford');
+INSERT INTO `location` VALUES ('H3A0G4','Canada','Montreal'),('T4N5H5','Canada','Red Deer'),('T6G2R3','Canada','Edmonton'),('T2N1N4','Canada','Calgary'),('CB21TN','Britain','Cambridge'),('T1K3M4','Canada','Lethbridge'),('OX12JD','Britain','Oxford');
 
 #
 # Structure for table "publication"
@@ -126,7 +126,7 @@ CREATE TABLE `user` (
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (1,'admin','2018-06-13 18:12:27','admin',1,0),(6,'mod','2018-06-13 18:13:14','mod',0,1),(7,'user','2018-06-13 18:13:26','user',0,1);
+INSERT INTO `user` VALUES (1,'admin','2018-06-13 18:12:27','admin',1,0),(6,'mod','2018-06-13 18:13:14','mod',0,1),(7,'user','2018-06-13 18:13:26','user',0,0);
 
 #
 # Structure for table "profile"
@@ -140,7 +140,7 @@ CREATE TABLE `profile` (
   PRIMARY KEY (`profile_id`),
   KEY `user_id_creator` (`user_id_creator`),
   KEY `institution_postal` (`I_postal`),
-  CONSTRAINT `institution_postal` FOREIGN KEY (`I_postal`) REFERENCES `institution` (`postal_code`),
+  CONSTRAINT `institution_postal` FOREIGN KEY (`I_postal`) REFERENCES `institution` (`postal_code`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`user_id_creator`) REFERENCES `user` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -148,7 +148,7 @@ CREATE TABLE `profile` (
 # Data for table "profile"
 #
 
-INSERT INTO `profile` VALUES (1,1,'T2N 1N4','Tamer Jarada'),(2,1,'T2N 1N4','Tamer Jarada2'),(3,1,'T6G 2R3','Some One');
+INSERT INTO `profile` VALUES (1,1,'T2N1N4','Tamer Jarada'),(2,1,'T2N1N4','Tamer Jarada2'),(3,1,'T6G2R3','Some One');
 
 #
 # Structure for table "report"
@@ -157,9 +157,10 @@ INSERT INTO `profile` VALUES (1,1,'T2N 1N4','Tamer Jarada'),(2,1,'T2N 1N4','Tame
 CREATE TABLE `report` (
   `profile_id` int(11) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL DEFAULT '0',
-  `date_resolved` datetime DEFAULT '0000-00-00 00:00:00',
+  `date_resolved` datetime DEFAULT NULL,
   `date_submit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `info` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`date_submit`),
   KEY `profile_id` (`profile_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `report_ibfk_1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`),
@@ -170,6 +171,7 @@ CREATE TABLE `report` (
 # Data for table "report"
 #
 
+INSERT INTO `report` VALUES (1,7,'2018-06-18 21:45:59','2018-06-17 19:32:07','Its all wrong!'),(1,7,NULL,'2018-06-18 21:45:59','asdasd');
 
 #
 # Structure for table "authored"
