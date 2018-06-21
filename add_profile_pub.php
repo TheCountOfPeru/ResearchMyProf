@@ -7,15 +7,23 @@ Profile creation page
 -->
 <?php
 include('session.php');
+$temp="";
+$safePost = filter_input_array(INPUT_GET);
+            foreach($safePost as $key => $value){
+               
+               $temp.",".$key;
+                }        
+                echo asd;
+                echo $temp;
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ResearchMyProf - Add Profile</title>
+        <title>ResearchMyProf - Add Publications</title>
     </head>
     <body>
         <h1 align="center"
-        style="font-family:consolas">Add Profile</h1>
+        style="font-family:consolas">Add Publications</h1>
         <hr>
         <table align="center">
             <tr>
@@ -31,12 +39,21 @@ include('session.php');
             </tr>
         </table>
         <hr>
+        
         <form align="center"
-              action="add_profile_loc.php"
+              action="add_profile_worked.php"
               method="">
-                   Full Name:<br>
-                   <input type="text" name="profile_name"><br><br> 
+Publications Authored: <br>
+                    Please type one publication per line. Add one link next to the title. Include the http part.<br>
+                    <textarea name="Report" rows="20" cols="75" autofocus="">
+                    </textarea><br><br>
+                
+                     
+                    
+ 
             <input type="submit" value="Next">
+            
         </form>
+        
         </body>
 </html>

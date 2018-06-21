@@ -3,7 +3,7 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
-Page to create reports. Needs to be accessed from a profile page so that the profile_id is given to this page
+Test page for create_profile submission
 -->
 <?php
     include('session.php');
@@ -32,17 +32,8 @@ Page to create reports. Needs to be accessed from a profile page so that the pro
             </tr>
         </table>
         <hr>
-        <?php
-            $sql="SELECT i_name, postal_code FROM institution order by i_name"; 
-                /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
-                echo "<select name=institution value=''>Institution</option>"; // list box select command
- 
-                foreach ($db->query($sql) as $row){//Array or records stored in $row
-                    echo "<option value=".preg_replace('/\s+/', ' ', $row[postal_code]).">$row[postal_code]</option>"; 
-                    /* Option values are added by looping through the array */ 
-                }
-                 echo "</select><br><br>";// Closing of list box
-                 echo $_GET[institution];
+        <?php   
+                 
             ?>
         </body>
 </html>

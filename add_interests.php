@@ -7,15 +7,16 @@ Profile creation page
 -->
 <?php
 include('session.php');
+$_SESSION['institution']= filter_input(INPUT_GET, 'institution');
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ResearchMyProf - Add Profile</title>
+        <title>ResearchMyProf - Pick Interests</title>
     </head>
     <body>
         <h1 align="center"
-        style="font-family:consolas">Add Profile</h1>
+        style="font-family:consolas">Pick Interests</h1>
         <hr>
         <table align="center">
             <tr>
@@ -31,12 +32,28 @@ include('session.php');
             </tr>
         </table>
         <hr>
+        
         <form align="center"
-              action="add_profile_loc.php"
+              action="add_profile_pub.php"
               method="">
-                   Full Name:<br>
-                   <input type="text" name="profile_name"><br><br> 
+                    Topics involved in:<br>
+            <?php
+            $sql="SELECT name FROM topic order by name"; 
+                /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
+                 
+                foreach ($db->query($sql) as $row){//Array or records stored in $row
+                    echo "<input type='checkbox' name='".$row[name]."' value='true'>".$row[name]."<br>";
+                    
+                    /* Option values are added by looping through the array */ 
+                }
+                 echo "</select><br><br>";// Closing of list box
+            ?>
+ 
             <input type="submit" value="Next">
+            
         </form>
+        <?php
+        echo $_SESSION['institution']
+        ?>
         </body>
 </html>
