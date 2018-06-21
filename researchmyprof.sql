@@ -3,24 +3,7 @@
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
-#
-# Structure for table "edit_history"
-#
 
-CREATE TABLE `edit_history` (
-  `profile_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `date_edited` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `edit_reason` varchar(255) DEFAULT NULL,
-  KEY `profile_id` (`profile_id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `edit_history_ibfk_1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`),
-  CONSTRAINT `edit_history_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#
-# Data for table "edit_history"
-#
 
 
 #
@@ -228,3 +211,21 @@ CREATE TABLE `worked_with` (
 # Data for table "worked_with"
 #
 
+#
+# Structure for table "edit_history"
+#
+
+CREATE TABLE `edit_history` (
+  `profile_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `date_edited` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `edit_reason` varchar(255) DEFAULT NULL,
+  KEY `profile_id` (`profile_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `edit_history_ibfk_1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`),
+  CONSTRAINT `edit_history_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for table "edit_history"
+#
