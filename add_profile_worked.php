@@ -7,6 +7,7 @@ Profile creation page
 -->
 <?php
 include('session.php');
+
 ?>
 <html>
     <head>

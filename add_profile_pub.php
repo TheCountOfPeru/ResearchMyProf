@@ -9,12 +9,11 @@ Profile creation page
 include('session.php');
 $temp="";
 $safePost = filter_input_array(INPUT_GET);
-            foreach($safePost as $key => $value){
-               
-               $temp.",".$key;
+            foreach($safePost as $key => $value){  
+               $temp=$key.",".$temp;
                 }        
-                echo asd;
-                echo $temp;
+               echo $temp;
+$_SESSION['topics']=$temp;
 ?>
 <html>
     <head>

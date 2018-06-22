@@ -78,7 +78,7 @@ and open the template in the editor.
               method="get">
             <p align="center">
                Query:<br>
-        <input type="text" name="query" value="<?php echo $name;?>"><br> 
+        <input type="text" name="query"><br> 
             </p>
            <p align="center">
             <input type="radio" name="select" <?php if (isset($select) && $select=="country") echo "checked";?> value="country">Country
