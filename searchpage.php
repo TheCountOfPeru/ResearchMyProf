@@ -87,7 +87,7 @@ and open the template in the editor.
                 <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic<br>
                 <br>
                 <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value='Search'>
-        <br>
+        <br><br>
         </form>
 
 

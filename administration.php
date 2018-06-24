@@ -39,8 +39,7 @@ include('session.php');
     <body>
     <div id = "container">
         <div id = "header">
-            <h1 align="center"
-                style="font-family:consolas">Administration</h1>
+            <h1>Administration</h1>
         </div>
         <div id = "content">
             <div class="w3-bar bar">
@@ -55,14 +54,14 @@ include('session.php');
                 <a href="logout.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Logout</a>
             </div>
     </div>
-        <form class="w3-container w3-border w3-light-grey w3-animate-input">
+        <form class="w3-cell-row w3-border w3-centered w3-light-grey w3-animate-input">
 
         <?php
         $sql = "SELECT user.user_id, user.username, user.is_admin, user.is_mod, user.start_date
                 FROM user";
 
         $result = mysqli_query($db,$sql);
-                    echo "<div class=\"w3-table w3-container w3-centered w3-bordered\">
+                    echo "<div class=\"w3-table w3-cell-row w3-centered w3-bordered\">
                             <table><tr>
                             <th>User Id</th>
                             <th>Username</th>
