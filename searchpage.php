@@ -86,17 +86,18 @@ and open the template in the editor.
                 <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
                 <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic<br>
                 <br>
-                <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value='Search'><br>
+                <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value='Search'>
+        <br>
+        </form>
 
 
-
-            <?php
+        <?php
             if($query != "" || $select != ""){
                 if ($result->num_rows > 0) {
                     // output data of each row
-                    echo "<table align='center'
-                            style='width:50%'
-                            border='1'><tr>
+                    echo "        
+        <div class=\"w3-table w4-container\" align='center'>
+                            <table><tr>
                             <th>Name</th>
                             <th>Topic</th>
                             <th>Institution</th>
@@ -118,8 +119,7 @@ and open the template in the editor.
                 }
             }
             ?>
-        </form>
-
+        </div>
     </div>
     <div id = "footer">
     </div>
