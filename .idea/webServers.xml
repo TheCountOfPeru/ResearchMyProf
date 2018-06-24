@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="573eaa2e-aef3-4b9d-a942-2beb35da88f3" name="appserve-apache" url="http://localhost">
+      <webServer id="0e0f8e7f-2809-46b9-9023-8b1d3254d416" name="appserve-server" url="http://localhost">
         <fileTransfer port="0" mountedRoot="C:\AppServ\www" accessType="MOUNT" />
       </webServer>
     </option>

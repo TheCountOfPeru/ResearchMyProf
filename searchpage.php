@@ -54,42 +54,42 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>ResearchMyProf - Search</title>
+        <link rel="stylesheet" type="text/css" href="newrmp.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
+    <div id = "container">
+        <div id = "header">
         <h1 align="center"
         style="font-family:consolas">Search</h1>
-        <hr>
-        <table align="center">
-            <tr>
+        </div>
+        <div id = "content">
+            <div class="w3-bar bar">
                 <?php if($_SESSION['is_admin'] == '1'){//Custom links depending on users permmisions
-                    echo "<td><a href='administration.php'>Administration</a></td>";
+                    echo "<a href='administration.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Administration</a>";
                 }?>
                 <?php if($_SESSION['is_mod'] == '1'){
-                    echo "<td><a href='moderation.php'>Moderation</a></td>";
+                    echo "<a href='moderation.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Moderation</a>";
                 }?>
-                <td><a href="searchpage.php">Search</a></td>
-                <td><a href="create_profile.php">Add Profile</a></td>
-                <td><a href="logout.php">Logout</a></td>
-                
-            </tr>
-        </table>
-        <hr>
-        <form action=""
-              method="get">
-            <p align="center">
-               Query:<br>
-        <input type="text" name="query" value="<?php echo $name;?>"><br> 
-            </p>
-           <p align="center">
-            <input type="radio" name="select" <?php if (isset($select) && $select=="country") echo "checked";?> value="country">Country
-            <input type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
-            <input type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic
-           </p>
-           <p align='center'>
-               <input type="submit" value='Search'>
-           </p>
-        </form>
-        <p>
+                <a href="searchpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Search</a>
+                <a href="create_profile.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Add Profile</a>
+                <a href="logout.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Logout</a>
+            </div>
+        </div>
+
+        <h2>Query:</h2>
+        <form class="w3-container w3-border w3-light-grey w3-animate-input">
+                <input class="w3-input w3-border-5 w3-pale-blue" type="text" name="query" value="<?php echo $name;?>">
+                <br>
+                <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="country") echo "checked";?> value="country">Country
+                <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
+                <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="topic") echo "checked";?> value="topic">Topic<br>
+                <br>
+                <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value='Search'><br>
+
+
+
             <?php
             if($query != "" || $select != ""){
                 if ($result->num_rows > 0) {
@@ -118,6 +118,10 @@ and open the template in the editor.
                 }
             }
             ?>
-        </p>
+        </form>
+
+    </div>
+    <div id = "footer">
+    </div>
         </body>
 </html>
