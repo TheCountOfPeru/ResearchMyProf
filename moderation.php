@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-Displays reports that are currently in the db
+Displays reports that are currently in the db. Can resolve reports.
 -->
 <?php
 include('session.php');
@@ -11,7 +8,9 @@ include('session.php');
             header("location:welcome.php"); //Prevent non admin access to this page
         }
         if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
+            //used when a report is checked as resolved
             $sql="";
+            //all changed check boxes are stored in an array and parsed to create update queries
             $safePost = filter_input_array(INPUT_POST);
             foreach($safePost as $key => $value){
                 $sql = "UPDATE report SET date_resolved=CURRENT_TIMESTAMP
@@ -47,6 +46,7 @@ include('session.php');
         <hr>
         <form action="" align="center" method="post">
         <?php
+        //print a table of all unresolved reports
         $sql = "SELECT *
                 FROM report";   
         $result = mysqli_query($db,$sql);

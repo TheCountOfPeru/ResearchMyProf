@@ -8,15 +8,20 @@ Profile creation page
 <?php
 include('session.php');
 if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
+    //this part happens after information has been submitted to create a new profile
+    //initialize some vars
     $sql="";
 $name = $_POST['profile_name'];
 $institution = $_POST['institution'];
+//start inserting into the db
 $sql="INSERT INTO profile (user_id_creator, I_postal, name) VALUES ('".$_SESSION['user_id']."', '".$institution."', '".$name."');";
 mysqli_query($db,$sql);
+//grab the newly created profile's id
 $sql="SELECT profile_id FROM profile WHERE user_id_creator=".$_SESSION['user_id']." AND I_postal='".$institution."' AND name='".$name."';";
 $result = mysqli_query($db,$sql);
 $first_row = $result->fetch_assoc();
 
+//prepare to insert into other important profile related tables
 $profile_id = $first_row['profile_id'];
 $topicsArr = $_POST['topics'];
 $assocArr = $_POST['assoc'];
@@ -36,7 +41,7 @@ if(!empty($assocArr)){
    }
 }
 
-$publicationArr = explode("\n", str_replace("\r", "", $publication));//https://stackoverflow.com/a/16518665
+$publicationArr = explode("\n", str_replace("\r", "", $publication));//source:https://stackoverflow.com/a/16518665
 if(!empty($publicationArr)){
     foreach ($publicationArr as $key => $value) {
        $pieces = explode(",", $value);
@@ -48,12 +53,9 @@ if(!empty($publicationArr)){
 
    }
 }
+//transport the user to the newly created profile page
 header("location: profile.php?=".$profile_id);
-}
-
-
-
-?>
+}?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -86,7 +88,8 @@ header("location: profile.php?=".$profile_id);
                    Institution:<br>
                     <?php
             $sql="SELECT i_name, postal_code FROM institution order by i_name"; 
-                /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
+                //populate a option box with a query
+            //source:https://www.idtech.com/blog/populating-a-combo-box-in-php-dynamically-from-mysql
                 echo "<select name=institution value=''>Institution</option>"; // list box select command
  
                 foreach ($db->query($sql) as $row){//Array or records stored in $row

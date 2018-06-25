@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
 Page to create reports. Needs to be accessed from a profile page so that the profile_id is given to this page
 -->
 <?php
     include('session.php');
-    if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
+    $profile_id = $_GET["id"];
+    if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){//used when a report is submitted
                 $report = mysqli_real_escape_string($db,filter_input(INPUT_POST, 'Report'));
                 $sql = "INSERT INTO report VALUES (".$profile_id.", ".$_SESSION['user_id'].
                         ", NULL, CURRENT_TIMESTAMP, '".$report."')";
                 echo $sql;
-                //mysqli_query($db,$sql);                   
+                //mysqli_query($db,$sql);
+                //transport the user back to the profile page
+                header("location: profile.php?=".$profile_id);
             }
 ?>
 <html>

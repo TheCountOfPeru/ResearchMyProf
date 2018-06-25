@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
 Page for user management. Restricted to admins.
 -->
 <?php
@@ -11,7 +8,7 @@ include('session.php');
             header("location:welcome.php"); //Prevent non admin access to this page
         }
         if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
-            
+            //only used when changes submitted
             $sql="";
             $safePost = filter_input_array(INPUT_POST);
             foreach($safePost as $key => $value){
