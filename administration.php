@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
 Page for user management. Restricted to admins.
 -->
 <?php
@@ -8,7 +11,7 @@ include('session.php');
             header("location:welcome.php"); //Prevent non admin access to this page
         }
         if(filter_input(INPUT_SERVER, 'REQUEST_METHOD') == "POST"){
-            //only used when changes submitted
+            
             $sql="";
             $safePost = filter_input_array(INPUT_POST);
             foreach($safePost as $key => $value){
@@ -28,36 +31,38 @@ include('session.php');
     <head>
         <meta charset="UTF-8">
         <title>ResearchMyProf - Administration</title>
+        <link rel="stylesheet" type="text/css" href="newrmp.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
+
     <body>
-        <h1 align="center"
-        style="font-family:consolas">Administration</h1>
-        <hr>
-        <table align="center">
-            <tr>
+    <div id = "container">
+        <div id = "header">
+            <h1>Administration</h1>
+        </div>
+        <div id = "content">
+            <div class="w3-bar bar">
                 <?php if($_SESSION['is_admin'] == '1'){//Custom links depending on users permmisions
-                    echo "<td><a href='administration.php'>Administration</a></td>";
+                    echo "<a href='administration.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Administration</a>";
                 }?>
                 <?php if($_SESSION['is_mod'] == '1'){
-                    echo "<td><a href='moderation.php'>Moderation</a></td>";
+                    echo "<a href='moderation.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Moderation</a>";
                 }?>
-                <td><a href="searchpage.php">Search</a></td>
-                <td><a href="create_profile.php">Add Profile</a></td>
-                <td><a href="logout.php">Logout</a></td>
-                
-            </tr>
-        </table>
-        <hr>
-        
-        <form action="" align="center" method="post">
+                <a href="searchpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Search</a>
+                <a href="create_profile.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Add Profile</a>
+                <a href="logout.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Logout</a>
+            </div>
+    </div>
+        <form class="w3-cell-row w3-border w3-centered w3-light-grey w3-animate-input">
+
         <?php
         $sql = "SELECT user.user_id, user.username, user.is_admin, user.is_mod, user.start_date
                 FROM user";
-                
+
         $result = mysqli_query($db,$sql);
-                    echo "<table align='center'
-                            style='width:50%'
-                            border='1'><tr>
+                    echo "<div class=\"w3-table w3-cell-row w3-centered w3-bordered\">
+                            <table><tr>
                             <th>User Id</th>
                             <th>Username</th>
                             <th>Is Admin</th>
@@ -75,16 +80,20 @@ include('session.php');
                         echo "<td>".$row["is_admin"]."</td>";
                         echo "<td>".$row["is_mod"]."</td>";
                         echo "<td>".$row["start_date"]."</td>";
-                        echo "<td align ='center'>"."<input type='checkbox' name=a".$row['user_id']." value='true'>"."</td>";
-                        echo "<td align ='center'>"."<input type='checkbox' name=m".$row['user_id']." value='true'>"."</td>";
+                        echo "<td>"."<input class = 'w3-check w3-centered' type='checkbox' name=a".$row['user_id']." value='true'>"."</td>";
+                        echo "<td>"."<input class = 'w3-check w3-centered' type='checkbox' name=m".$row['user_id']." value='true'>"."</td>";
                         echo "</tr>";
                     }
                     
                     echo "</table>";
                 
         ?>
-        <input type="submit" value="Admin/Moderator Permissions Flip" title="Change the status of a user"> 
+        <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value="Admin/Moderator Permissions Flip" title="Change the status of a user">
         </form>
-        
-        </body>
+
+        <div id="footer">
+
+        </div>
+
+    </body>
 </html>
