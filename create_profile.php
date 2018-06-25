@@ -46,7 +46,8 @@ if(!empty($publicationArr)){
     foreach ($publicationArr as $key => $value) {
        $pieces = explode(",", $value);
        $sql="INSERT INTO publication VALUES ('".trim($pieces[0])."', '".trim($pieces[1])."');";
-
+       mysqli_query($db,$sql);
+       $sql="INSERT INTO related_to VALUES ('".trim($pieces[2])."', '".trim($pieces[0])."');";
        mysqli_query($db,$sql);
        $sql="INSERT INTO authored VALUES (".$profile_id.", '".trim($pieces[0])."');";
        mysqli_query($db,$sql);
@@ -54,7 +55,7 @@ if(!empty($publicationArr)){
    }
 }
 //transport the user to the newly created profile page
-header("location: profile.php?=".$profile_id);
+header("location: profile.php?id=".$profile_id);
 }?>
 <html>
     <head>
@@ -98,7 +99,9 @@ header("location: profile.php?=".$profile_id);
                 }
                  echo "</select><br><br>";// Closing of list box
             ?>
+                   
                    Topic(s) Interest In:<br>
+                   Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.<br>
                     <?php
             $sql="SELECT name FROM topic order by name"; 
                 /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
@@ -112,11 +115,13 @@ header("location: profile.php?=".$profile_id);
             ?>
                    
                    Publications Authored: <br>
-                    Please type one publication per line. Add one link next to the title. Include the http part.<br>
-                    <textarea name="publication" rows="20" cols="75" autofocus="">
+                   Please type one publication per line in the format:<br>
+                   [Title],[link to],[Topic Related to]<br>
+                    <textarea name="publication" rows="20" cols="100" autofocus="">
                     </textarea><br><br>
                     
                     Associated Profiles:<br>
+                     Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.<br>
                     <?php
             $sql="SELECT name, profile_id FROM profile order by name"; 
                 /* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
@@ -130,7 +135,7 @@ header("location: profile.php?=".$profile_id);
             ?>
                     
                     
-            <input type="submit" value="Next">
+            <input type="submit" value="Submit">
         </form>
         </body>
 </html>
