@@ -65,7 +65,7 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
             action="" 
             method="post">
         Username:<br>
-        <input type="text" name="Username"><br>
+        <input type="text" name="Username" autofocus=""><br>
         Password:<br>
         <input type="password" name="Password"><br><br>
         <input type="submit" value="Login">
