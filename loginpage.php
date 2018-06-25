@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
 sources: https://www.tutorialspoint.com/php/php_mysql_login.htm
 https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-post-array-directly-on-netbeans-7-4-for-ph
 -->
@@ -62,7 +65,7 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
             action="" 
             method="post">
         Username:<br>
-        <input type="text" name="Username" autofocus=""><br>
+        <input type="text" name="Username"><br>
         Password:<br>
         <input type="password" name="Password"><br><br>
         <input type="submit" value="Login">
