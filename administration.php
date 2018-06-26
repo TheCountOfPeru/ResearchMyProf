@@ -61,8 +61,8 @@ include('session.php');
                 FROM user";
 
         $result = mysqli_query($db,$sql);
-                    echo "<div class=\"w3-table w3-cell-row w3-centered w3-bordered\">
-                            <table><tr>
+                    echo "<div>
+                            <table class=\"w3-table w3-cell-row w3-centered w3-bordered\"><tr>
                             <th>User Id</th>
                             <th>Username</th>
                             <th>Is Admin</th>

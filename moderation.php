@@ -24,35 +24,36 @@ include('session.php');
     <head>
         <meta charset="UTF-8">
         <title>ResearchMyProf - Moderation</title>
+        <link rel="stylesheet" type="text/css" href="newrmp.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
-        <h1 align="center"
-        style="font-family:consolas">Moderation</h1>
-        <hr>
-        <table align="center">
-            <tr>
+    <div id = "container">
+        <div id = "header">
+        <h1>Moderation</h1>
+        </div>
+        <div id = "content">
+            <div class="w3-bar bar">
                 <?php if($_SESSION['is_admin'] == '1'){//Custom links depending on users permmisions
-                    echo "<td><a href='administration.php'>Administration</a></td>";
+                    echo "<a href='administration.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Administration</a>";
                 }?>
                 <?php if($_SESSION['is_mod'] == '1'){
-                    echo "<td><a href='moderation.php'>Moderation</a></td>";
+                    echo "<a href='moderation.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Moderation</a>";
                 }?>
-                <td><a href="searchpage.php">Search</a></td>
-                <td><a href="create_profile.php">Add Profile</a></td>
-                <td><a href="logout.php">Logout</a></td>
-                
-            </tr>
-        </table>
-        <hr>
-        <form action="" align="center" method="post">
+                <a href="searchpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Search</a>
+                <a href="create_profile.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Add Profile</a>
+                <a href="logout.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Logout</a>
+            </div>
+        </div>
+        <form action="" method="post">
         <?php
         //print a table of all unresolved reports
         $sql = "SELECT *
                 FROM report";   
         $result = mysqli_query($db,$sql);
-                    echo "<table align='center'
-                            style='width:50%'
-                            border='1'><tr>
+                    echo "<div>
+                            <table class=\"w3-table w3-container w3-bordered\"><tr>
                             <th>Profile Id</th>
                             <th>User Id</th>
                             <th>Date Submitted</th>
@@ -78,10 +79,12 @@ include('session.php');
                         echo "</tr>";
                     }
                     
-                    echo "</table>";
+                    echo "</table><br>";
                 
         ?>
-        <input type="submit" value="Mark as resolved" title="Change the status of selected reports to 'resolved'"> 
-        </form>
+            </div>
+        <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value="Mark as resolved" title="Change the status of selected reports to 'resolved'">
+        </form><br><br>
+    </div>
         </body>
 </html>
