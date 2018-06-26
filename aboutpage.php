@@ -30,23 +30,22 @@ and open the template in the editor.
                 One of the important functions of post secondary institutions is research. In 2016
                 Universities consisting of over 100 full-time teaching staff employed over 45,000
 
-                staff involved in research [<cite><a href="http://www.statcan.gc.ca/tables-tableaux/"><i>1</i></a></cite>]. Students of post secondary institutions are encour-
-                aged to participate in academic research by working with a professor who would
+                staff involved in research [<cite><a href="http://www.statcan.gc.ca/tables-tableaux/"><i>1</i></a></cite>].
+                Students of post secondary institutions are encouraged to participate in academic research by working with a professor who would
 
                 be their supervisor[<cite><a href="http://www.ucalgary.ca/
 science/undergraduate/research/how_to_start"><i>2</i></a></cite>]. Supervisors provide support and mentoring to students so
                 that they can complete their research and publish their findings.
 
-                One of the key steps in academic research is the student’s choice of super-
-                visor. To students that are just beginning to engage or who are furthering their
+                One of the key steps in academic research is the student’s choice of supervisor.
+                To students that are just beginning to engage or who are furthering their
 
                 research, this can be an overwhelming issue. Without a supervisor to help guide
                 them, students hoping to pursue research are often unable to apply for grants, and
                 may become dissuaded from attempting to apply to because many application sites
-                are outdated poorly maintained [<cite><a href="http://www.ucalgary.ca/provost/TLFC"><i>3</i></a></cite>]. Finding a supervisor with relevant abilities,
-
-                background, and research interest increases the chances that academic collabora-
-                tion will benefit the student and supervisor. Often, researching professors publish
+                are outdated poorly maintained [<cite><a href="http://www.ucalgary.ca/provost/TLFC"><i>3</i></a></cite>].
+                Finding a supervisor with relevant abilities, background, and research interest increases the chances that academic
+                collaboration will benefit the student and supervisor. Often, researching professors publish
 
                 in areas that differ from their academic credentials, or the scope of their current
                 research differs significantly from their formal training. This discrepancy can often
