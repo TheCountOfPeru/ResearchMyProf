@@ -117,7 +117,7 @@ Page for making updates to a profile. Should be linked to from all profile pages
             echo "<tr>";
             echo "<td>".$second_row['Tname']."</td>";
             echo "<td>".$second_row['Pname']."<br>Link:"."</td>";
-            echo "<td><a href>".$second_row['link_to']."</a></td>";
+            echo "<td><a href=" .$second_row['link_to'].">".$second_row['link_to']."</a></td>";
             echo "<br><br>";
         }
         ?>
@@ -151,12 +151,11 @@ Page for making updates to a profile. Should be linked to from all profile pages
                  "SELECT worked_with.profile_idB, profile.name
                    FROM worked_with, profile
                     WHERE worked_with.profile_idB = profile.profile_id 
-                    and worked_with.profile_idA = 1
-                    and p.profile_id=".filter_input(INPUT_GET, 'id');
+                    and worked_with.profile_idA =".filter_input(INPUT_GET, 'id');
         $result2 = mysqli_query($db,$sqlname);
         while($second_row = $result2->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>".$second_row['name']."</td>";
+        echo "<td><a href='profile.php?id=".$second_row['profile_idB']."'>".$second_row['name']."</a></td>";
         echo "<br>";
         }
         ?>
