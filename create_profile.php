@@ -73,7 +73,7 @@ include('session.php');
                 
                     Publications Authored: <br>
                     Please type one publication per line. Add one link next to the title. Include the http part.<br>
-                    <textarea style="width:80%" name="Report" rows="20" cols="75" autofocus="">
+                    <textarea style="width:80%" name="Report" rows="20" cols="75">
                     </textarea><br><br>
                 
                      Professors worked with:<br>

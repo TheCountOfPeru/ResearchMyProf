@@ -19,26 +19,29 @@ Page to create reports. Needs to be accessed from a profile page so that the pro
     <head>
         <meta charset="UTF-8">
         <title>ResearchMyProf - Report</title>
+        <link rel="stylesheet" type="text/css" href="newrmp.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
-        <h1 align="center"
-        style="font-family:consolas">Report</h1>
-        <hr>
-        <table align="center">
-            <tr>
+    <div id = "container">
+        <div id = "header">
+        <h1>Report</h1>
+        </div>
+        <div id = "content">
+            <div class="w3-bar bar">
                 <?php if($_SESSION['is_admin'] == '1'){//Custom links depending on users permmisions
-                    echo "<td><a href='administration.php'>Administration</a></td>";
+                    echo "<a href='administration.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Administration</a>";
                 }?>
                 <?php if($_SESSION['is_mod'] == '1'){
-                    echo "<td><a href='moderation.php'>Moderation</a></td>";
+                    echo "<a href='moderation.php' class=\"w3-button w3-blue w3-round w3-ripple w3-xlarge\" style=\"width: 20%\">Moderation</a>";
                 }?>
-                <td><a href="searchpage.php">Search</a></td>
-                <td><a href="create_profile.php">Add Profile</a></td>
-                <td><a href="logout.php">Logout</a></td>
-            </tr>
-        </table>
-        <hr>
-        <form align="center"
+                <a href="searchpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Search</a>
+                <a href="create_profile.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Add Profile</a>
+                <a href="logout.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Logout</a>
+            </div>
+        </div>
+        <form class="w3-dropdown w3-center w3-container"
               method="post">
             <p>
                 Please write a report that clearly states what is incorrect and how it should be fixed.
@@ -46,11 +49,14 @@ Page to create reports. Needs to be accessed from a profile page so that the pro
                 Providing sources to where you found the correct information is recommended.
             </p>
             
-            <textarea name="Report" rows="10" cols="50" autofocus="">
+            <textarea  style="width:80%" name="Report" rows="10" cols="50" autofocus="">
             
             </textarea>
             <br>
-            <input type="submit">
+            <input class="w3-btn w3-padding w3-blue w3-round" type="submit">
+            <br><br>
         </form>
-        </body>
+        </div>
+    </div>
+    </body>
 </html>

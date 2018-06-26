@@ -80,9 +80,7 @@ and open the template in the editor.
 
         <h2>Query:</h2>
         <form class="w3-container w3-border w3-light-grey w3-animate-input">
-                <p style="width: 80%">
                 <input class="w3-input w3-border-5 w3-"  type="text" name="query" value="<?php echo $name;?>">
-                </p>
                     <br>
                 <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="country") echo "checked";?> value="country">Country
                 <input class="w3-radio" type="radio" name="select" <?php if (isset($select) && $select=="institution") echo "checked";?> value="institution">Institution
@@ -90,16 +88,14 @@ and open the template in the editor.
                 <br>
                 <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value='Search'>
         <br><br>
-        </form>
+
 
 
         <?php
             if($query != "" || $select != ""){
                 if ($result->num_rows > 0) {
                     // output data of each row
-                    echo "        
-        <div class=\"w3-table w4-container\" align='center'>
-                            <table><tr>
+                    echo "<table class=\"w3-table w4-container\"><tr>
                             <th>Name</th>
                             <th>Topic</th>
                             <th>Institution</th>
@@ -115,13 +111,13 @@ and open the template in the editor.
                         echo "<td>".$row["city"]."</td>";
                         echo "</tr>";
                     }
-                    echo "</table>";
+                    echo "</table><br><br>";
                 } else {
-                    echo "<p align='center'>0 results</p>";
+                    echo "<p align='center'>0 results</p><br><br>";
                 }
             }
             ?>
-        </div>
+        </form>
     </div>
     <div id = "footer">
     </div>
