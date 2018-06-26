@@ -64,18 +64,14 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
                     <a href="aboutpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 30%">About</a>
                 </div>
             </div>
-        <form
+        <form class="w3-container w3-center"
             action=""
             method="post">
         Username:<br>
-            <div class="w3-container w3-center">
-                <input class="w3-input w3-border w3-centered" type="text" name="Username"><br>
-            </div>
+                <input class="w3-input w3-border" type="text" name="Username"><br>
 
         Password:<br>
-            <div class="w3-container w3-centered">
-                <input class="w3-input w3-border w3-centered" type="password" name="Password"><br><br>
-            </div>
+                <input class="w3-input w3-border" type="password" name="Password"><br><br>
         <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value="Login">
         </form><br><br>
     </div>
