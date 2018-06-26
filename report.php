@@ -12,7 +12,7 @@ Page to create reports. Needs to be accessed from a profile page so that the pro
                 echo $sql;
                 //mysqli_query($db,$sql);
                 //transport the user back to the profile page
-                header("location: profile.php?=".$profile_id);
+                header("location: profile.php?id=".$profile_id);
             }
 ?>
 <html>
