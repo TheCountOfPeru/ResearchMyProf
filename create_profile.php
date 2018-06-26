@@ -16,7 +16,7 @@ include('session.php');
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
-    </div>
+    <body>
     <div id = "container">
         <div id = "header">
         <h1>Add Profile</h1>
@@ -39,9 +39,10 @@ include('session.php');
         <form class="w3-dropdown w3-center w3-container"
               action="create_profile_confimation.php"
               method="">
-
+                <div class="w3-center">
                 Full Name:<br>
-                <input class="w3-input w3-border w3-centered" type="text" name="profile_name"><br><br>
+                <input class="w3-input w3-border w3-center" type="text" name="profile_name"><br><br>
+                </div>
             Institution:<br>
             <?php
             $sql="SELECT i_name, postal_code FROM institution order by i_name"; 

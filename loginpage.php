@@ -46,29 +46,38 @@ https://stackoverflow.com/questions/19767894/warning-do-not-access-superglobal-p
 ?>
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>ResearchMyProf - Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="newrmp.css">
     </head>
     <body>
-        <h1 align="center"
-        style="font-family:consolas">Login</h1>
-        <hr>
-        <table align="center">
-            <tr>
-                <td><a href="index.php">Home</a></td>
-                <td><a href="loginpage.php">Login</a></td>
-                <td><a href="aboutpage.php">About</a></td>
-            </tr>
-        </table>
-        <hr>
-        <form align="center" 
-            action="" 
+    <div id = "container">
+        <div id = "header">
+        <h1>Login</h1>
+        </div>
+            <div id = "content">
+                <div class="w3-bar bar", style="vertical-align: center">
+                    <a href="index.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 30%">Index</a>
+                    <a href="loginpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 30%">Login</a>
+                    <a href="aboutpage.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 30%">About</a>
+                </div>
+            </div>
+        <form
+            action=""
             method="post">
         Username:<br>
-        <input type="text" name="Username"><br>
+            <div class="w3-container w3-center">
+                <input class="w3-input w3-border w3-centered" type="text" name="Username"><br>
+            </div>
+
         Password:<br>
-        <input type="password" name="Password"><br><br>
-        <input type="submit" value="Login">
-        </form>
+            <div class="w3-container w3-centered">
+                <input class="w3-input w3-border w3-centered" type="password" name="Password"><br><br>
+            </div>
+        <input class="w3-btn w3-padding w3-blue w3-round" type="submit" value="Login">
+        </form><br><br>
+    </div>
     </body>
 </html>
