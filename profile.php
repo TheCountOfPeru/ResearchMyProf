@@ -57,7 +57,7 @@ Page for making updates to a profile. Should be linked to from all profile pages
                  $result = mysqli_query($db,$sqlname);
                  $first_row = $result->fetch_assoc();
                 
-                echo "<td><a href='profile.php?id=".$first_row["profile_id"]."'>Report Profile</a></td>"; 
+                echo "<td><a href='report.php?id=".$first_row["profile_id"]."'>Report Profile</a></td>"; 
                 ?>
             </tr>
         </table>
