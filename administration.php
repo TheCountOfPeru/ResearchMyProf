@@ -54,7 +54,7 @@ include('session.php');
                 <a href="logout.php" class="w3-button w3-blue w3-round w3-ripple w3-xlarge" style="width: 20%">Logout</a>
             </div>
     </div>
-        <form class="w3-cell-row w3-border w3-centered w3-light-grey w3-animate-input">
+        <form class="w3-cell-row w3-border w3-centered w3-light-grey w3-animate-input" action="" align="center" method="post">
 
         <?php
         $sql = "SELECT user.user_id, user.username, user.is_admin, user.is_mod, user.start_date
