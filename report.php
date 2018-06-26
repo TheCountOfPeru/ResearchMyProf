@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--
 Page to create reports. Needs to be accessed from a profile page so that the profile_id is given to this page
+Written Jonathan Yee, Brandt Davis and Dylan Loader
 -->
 <?php
     include('session.php');

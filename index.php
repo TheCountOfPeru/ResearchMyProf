@@ -3,7 +3,7 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
-Jonathan Yee, Brandt Davis, Dylan Loader
+Written Jonathan Yee, Brandt Davis and Dylan Loader
 -->
 <html>
     <head>

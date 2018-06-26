@@ -1,6 +1,7 @@
 <?php
 /* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+server with default setting (user 'root' with no password)
+Written Jonathan Yee, Brandt Davis and Dylan Loader*/
 define('DB_SERVER', 'localhost:3306');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'rootpass');

@@ -1,5 +1,5 @@
 <!--Session.php will verify the session, if there is no session it will redirect to login page.*/
-
+Written Jonathan Yee, Brandt Davis and Dylan Loader
 -->
 <?php
    include('config.php');

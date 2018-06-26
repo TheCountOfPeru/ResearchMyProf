@@ -1,4 +1,5 @@
 <!--After successful login, it will display welcome page.
+Written Jonathan Yee, Brandt Davis and Dylan Loader
 -->
 
 <?php
